@@ -370,7 +370,7 @@ class SOM(object):
         :returns: the best matching unit for each input
         """
         dlen = input_matrix.shape[0]
-        y2 = np.einsum('ij,ij->i', self.codebook.matrix, self.codebook.matrix)
+        y2 = np.einsum('ij,ij->i', self.codebook.matrix, self.codebook.matrix) #distance -HC
         if njb == -1:
             njb = cpu_count()
 
