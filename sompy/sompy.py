@@ -523,15 +523,15 @@ class SOM(object):
             (number of node from top left node)
         :returns: corresponding (x,y) coordinate
         """
-        rows = self.codebook.mapsize[0]
+        rows = self.codebook.mapsize[0]   
         cols = self.codebook.mapsize[1]
 
         # bmu should be an integer between 0 to no_nodes
         out = np.zeros((bmu_ind.shape[0], 3))
         out[:, 2] = bmu_ind
         out[:, 0] = rows-1-bmu_ind / cols
-        out[:, 0] = bmu_ind / cols
-        out[:, 1] = bmu_ind % cols
+        out[:, 0] = bmu_ind / cols   #y
+        out[:, 1] = bmu_ind % cols  #x
 
         return out.astype(int)
 
