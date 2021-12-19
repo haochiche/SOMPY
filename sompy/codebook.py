@@ -108,11 +108,11 @@ class Codebook(object):
 
         mx = np.max(coord, axis=0)
         mn = np.min(coord, axis=0)
-        coord = (coord - mn)/(mx-mn)
-        coord = (coord - .5)*2
-        me = np.mean(data, 0)
-        data = (data - me)
-        tmp_matrix = np.tile(me, (self.nnodes, 1))
+        coord = (coord - mn)/(mx-mn) #Normalising data, from 0 to 1 --HC
+        coord = (coord - .5)*2    #change the normalised data range, from -1 to 1 --HC
+        me = np.mean(data, 0)   #here data is already normalized raw data. same as som._data. me then is the mean for each feature  --HC
+        data = (data - me)     #divation from the mean  --HC
+        tmp_matrix = np.tile(me, (self.nnodes, 1)) #Copy and extend a one-bit array to a node dimension --HC
 
         # Randomized PCA is scalable
         #pca = RandomizedPCA(n_components=pca_components) # RandomizedPCA is deprecated.
